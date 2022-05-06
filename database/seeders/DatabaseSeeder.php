@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             SpecieSeeder::class,
             PokemonSeeder::class,
             TypeSeeder::class,
-            PokemonTypeSeeder::class
+            PokemonTypeSeeder::class,
+            AbilitySeeder::class
         ]);
     }
 }
