@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SpecieSeeder::class,
             PokemonSeeder::class,
-            TypeSeeder::class
+            TypeSeeder::class,
+            PokemonTypeSeeder::class
         ]);
     }
 }
