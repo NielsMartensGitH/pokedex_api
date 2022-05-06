@@ -27,7 +27,9 @@ class DatabaseSeeder extends Seeder
             MoveSeeder::class,
             PokemonMoveSeeder::class,
             StatTypeSeeder::class,
-            PokemonStatTypeSeeder::class
+            PokemonStatTypeSeeder::class,
+            TeamSeeder::class,
+            TeamPokemonSeeder::class
         ]);
     }
 }
