@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('sprites', function (Blueprint $table) {
             $table->id();
-            $table->text('image_path');
+            $table->foreignId('pokemon_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('sprite_category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->text('image_path')->nullable();
             $table->timestamps();
         });
     }

@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pokemon_sprites', function (Blueprint $table) {
+        Schema::create('sprite_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pokemon_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('sprite_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pokemon_sprites');
+        Schema::dropIfExists('sprite_categories');
     }
 };
