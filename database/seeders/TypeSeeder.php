@@ -17,7 +17,7 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        $json = File::get("database/data/pokemons.json");
+        $json = File::get(env('JSON_FILE'));
         $data = json_decode($json);
         DB::table('types')->delete();
         $pokemonTypes = []; // here we store all the types which appear in json file

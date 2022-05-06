@@ -17,7 +17,7 @@ class SpecieSeeder extends Seeder
      */
     public function run()
     {
-        $json = File::get("database/data/pokemons.json");
+        $json = File::get(env('JSON_FILE'));
         $data = json_decode($json);
 
         DB::table('species')->delete();

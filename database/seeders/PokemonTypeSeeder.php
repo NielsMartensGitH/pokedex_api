@@ -18,7 +18,7 @@ class PokemonTypeSeeder extends Seeder
      */
     public function run()
     {
-        $json = File::get("database/data/pokemons.json");
+        $json = File::get(env('JSON_FILE'));
         $data = json_decode($json);
 
         $pokemon_ids = DB::table('pokemon')->pluck('id'); // get all pokemon ids in order from DB
