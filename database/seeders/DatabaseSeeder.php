@@ -23,7 +23,9 @@ class DatabaseSeeder extends Seeder
             PokemonTypeSeeder::class,
             AbilitySeeder::class,
             SpriteCategorySeeder::class,
-            SpriteSeeder::class
+            SpriteSeeder::class,
+            MoveSeeder::class,
+            PokemonMoveSeeder::class
         ]);
     }
 }
