@@ -9,4 +9,12 @@ class MoveLearnMethod extends Model
 {
     use HasFactory;
 
+    public function moves() {
+        return $this->hasManyThrough(Move::class, MoveVersionGroup::class, 'move_learn_method_id', 'id', 'id', 'move_id');
+    }
+
+    public function version_groups() {
+        return $this->hasManyThrough(VersionGroup::class, MoveVersionGroup::class, 'move_learn_method_id', 'id', 'id', 'version_group_id');
+    }
+
 }

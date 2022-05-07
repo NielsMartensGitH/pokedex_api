@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class MoveVersionGroup extends Model
 {
     use HasFactory;
+
 }

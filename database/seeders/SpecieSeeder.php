@@ -17,8 +17,6 @@ class SpecieSeeder extends Seeder
      */
     public function run()
     {
-        $test = Specie::with('pokemon')->first();
-        dd($test);
         $json = File::get(env('JSON_FILE'));
         $data = json_decode($json);
 

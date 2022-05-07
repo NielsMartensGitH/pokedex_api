@@ -17,7 +17,6 @@ class MoveLearnMethodSeeder extends Seeder
      */
     public function run()
     {
-
         $json = File::get(env('JSON_FILE'));
         $data = json_decode($json);
         DB::table('move_learn_methods')->delete();

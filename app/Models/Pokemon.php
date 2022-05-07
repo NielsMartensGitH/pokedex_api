@@ -24,4 +24,32 @@ class Pokemon extends Model
     public function abilities() {
         return $this->HasManyThrough(Ability::class, PokemonAbility::class, 'pokemon_id', 'id', 'id', 'ability_id');
     }
+
+    public function teams() {
+        return $this->HasManyThrough(Team::class, TeamPokemon::class, 'pokemon_id', 'id', 'id', 'team_id');
+    }
+
+    public function stat_types() {
+        return $this->HasManyThrough(StatType::class, PokemonStatType::class, 'pokemon_id', 'id', 'id', 'stat_type_id');
+    }
+
+    public function pokemon_stats() {
+        return $this->HasMany(PokemonStatType::class);
+    }
+
+    public function moves() {
+        return $this->HasManyThrough(Move::class, PokemonMove::class, 'pokemon_id', 'id', 'id', 'move_id');
+    }
+
+    public function sprite_categories() {
+        return $this->HasManyThrough(SpriteCategory::class, Sprite::class, 'pokemon_id', 'id', 'id', 'sprite_category_id');
+    }
+
+    public function sprites() {
+        return $this->HasMany(Sprite::class);
+    }
+
+    public function pokemon_types() {
+        return $this->HasMany(PokemonType::class);
+    }
 }
