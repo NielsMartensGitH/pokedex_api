@@ -33,7 +33,7 @@ class TypeSeeder extends Seeder
         }
 
         foreach($pokemonTypes as $type) {
-            Type::create(array('name' => $type));
+            Type::create(['name' => $type]);
         }
     }
 }

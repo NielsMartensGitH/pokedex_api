@@ -19,7 +19,7 @@ class SpriteSeeder extends Seeder
     {
         $json = File::get(env('JSON_FILE'));
         $data = json_decode($json);
-        DB::table('types')->delete();
+        DB::table('sprites')->delete();
         $pokemon_ids = DB::table('pokemon')->pluck('id'); // get all pokemon ids in order from DB
         $sprite_category_ids = DB::table('sprite_categories')->pluck('id');
         foreach ($data as $i => $pokemon) {

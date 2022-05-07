@@ -31,12 +31,12 @@ class PokemonAbilitySeeder extends Seeder
                 $is_hidden = $ability->is_hidden;
                 $ability_name = $ability->ability->name;
                 $ability_id = Ability::where('name', $ability_name)->first(); // get the id from types table that has the same name
-                PokemonAbility::create(array(
+                PokemonAbility::create([
                     'pokemon_id' => $pokemon_ids[$i],
                     'ability_id' => $ability_id->id,
                     'is_hidden' => $is_hidden,
                     'slot' => $slot
-                ));
+                ]);
             }
         }
     }

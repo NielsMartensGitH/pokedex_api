@@ -24,17 +24,18 @@ class PokemonTypeSeeder extends Seeder
         $pokemon_ids = DB::table('pokemon')->pluck('id'); // get all pokemon ids in order from DB
         DB::table('pokemon_types')->delete();
 
+
         foreach ($data as $i => $pokemon) {
             $types = $pokemon->types;
             foreach ($types as $type) { // loop over all the types for each pokemon
                 $slot = $type->slot;
                 $type_name = $type->type->name;
                 $type_id = Type::where('name', $type_name)->first(); // get the id from types table that has the same name
-                PokemonType::create(array(
+                PokemonType::create([
                     'pokemon_id' => $pokemon_ids[$i],
                     'type_id' => $type_id->id,
                     'slot' => $slot
-                ));
+                ]);
             }
         }
     }

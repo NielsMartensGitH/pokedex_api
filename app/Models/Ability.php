@@ -9,7 +9,8 @@ class Ability extends Model
 {
     use HasFactory;
 
-    public function pokemons() {
-        return $this->hasManyThrough(Ability::class, PokemonAbility::class, 'ability_id', 'id', 'id', 'pokemon_id');
+    public function pokemons_abilities() {
+
+        return $this->hasMany(PokemonAbility::class);
     }
 }
