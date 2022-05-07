@@ -12,4 +12,8 @@ class Sprite extends Model
     protected $fillable = [
         'pokemon_id', 'sprite_category_id', 'image_path'
     ];
+
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
 }

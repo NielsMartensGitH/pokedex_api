@@ -13,6 +13,10 @@ class Pokemon extends Model
         'name', 'height', 'weight', 'order', 'specie_id'
     ];
 
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
+
     public function specie() {
         return $this->belongsTo(Specie::class);
     }

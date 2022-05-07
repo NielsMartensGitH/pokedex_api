@@ -9,6 +9,14 @@ class Ability extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name'
+    ];
+
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
+
     public function pokemons_abilities() {
 
         return $this->hasMany(PokemonAbility::class);

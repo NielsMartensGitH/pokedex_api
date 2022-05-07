@@ -9,6 +9,14 @@ class VersionGroup extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name'
+    ];
+
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
+
     public function move_learn_methods() {
         return $this->HasManyThrough(MoveLearnMethod::class, MoveVersionGroup::class, 'version_group_id', 'id', 'id', 'move_learn_method_id');
     }

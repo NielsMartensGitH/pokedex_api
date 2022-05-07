@@ -10,6 +10,10 @@ class PokemonType extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'pokemon_id', 'type_id', 'slot'
+    ];
+
+    protected $hidden = [
+        'created_at', 'updated_at'
     ];
 }

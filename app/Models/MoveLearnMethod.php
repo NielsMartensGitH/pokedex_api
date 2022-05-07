@@ -9,6 +9,14 @@ class MoveLearnMethod extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name'
+    ];
+
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
+
     public function moves() {
         return $this->hasManyThrough(Move::class, MoveVersionGroup::class, 'move_learn_method_id', 'id', 'id', 'move_id');
     }

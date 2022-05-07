@@ -9,6 +9,14 @@ class PokemonAbility extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+       'pokemon_id', 'ability_id', 'is_hidden', 'slot'
+    ];
+
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
+
     public function ability() {
         return $this->belongsTo(Ability::class);
     }
