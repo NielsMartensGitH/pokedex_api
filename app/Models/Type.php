@@ -14,7 +14,7 @@ class Type extends Model
     ];
 
     protected $hidden = [
-        'created_at', 'updated_at'
+        'created_at', 'updated_at', 'id', 'laravel_through_key'
     ];
 
     public function pokemon() {

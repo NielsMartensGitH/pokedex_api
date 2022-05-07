@@ -14,6 +14,6 @@ class PokemonType extends Model
     ];
 
     protected $hidden = [
-        'created_at', 'updated_at'
+        'created_at', 'updated_at', 'pokemon_id', 'type_id', 'id'
     ];
 }

@@ -14,6 +14,6 @@ class Sprite extends Model
     ];
 
     protected $hidden = [
-        'created_at', 'updated_at'
+        'created_at', 'updated_at', 'id', 'pokemon_id', 'sprite_category_id'
     ];
 }
