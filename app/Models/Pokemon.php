@@ -14,7 +14,7 @@ class Pokemon extends Model
     ];
 
     public function specie() {
-        return $this->belongsTo(Pokemon::class);
+        return $this->belongsTo(Specie::class);
     }
 
     public function types() {
