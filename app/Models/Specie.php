@@ -14,6 +14,6 @@ class Specie extends Model
     ];
 
     public function pokemon() {
-        $this->hasMany(Pokemon::class);
+        return $this->HasOne(Pokemon::class);
     }
 }
