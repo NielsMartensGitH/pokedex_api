@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('move_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('version_group_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('move_learn_method_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('level_learned_at');
             $table->timestamps();
         });
     }

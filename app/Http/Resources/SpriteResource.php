@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\SpriteCategory;
 
 class SpriteResource extends JsonResource
 {
@@ -13,9 +14,9 @@ class SpriteResource extends JsonResource
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
-    {
+    {;
         return [
-            'front_default' => $this->image_path
+            SpriteCategory::where('id', $this->sprite_category_id)->first()->name => $this->image_path,
         ];
     }
 }

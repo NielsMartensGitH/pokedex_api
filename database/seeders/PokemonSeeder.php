@@ -27,6 +27,7 @@ class PokemonSeeder extends Seeder
             $height = $pokemon->height;
             $weight = $pokemon->weight;
             $order = $pokemon->order;
+            $form = $pokemon->forms[0]->name;
             $specie_id = $specie_ids[$i];
 
             Pokemon::create(array(
@@ -34,6 +35,7 @@ class PokemonSeeder extends Seeder
                 'height' => $height,
                 'weight' => $weight,
                 'order' => $order,
+                'form' => $form,
                 'specie_id' => $specie_id
             ));
         }

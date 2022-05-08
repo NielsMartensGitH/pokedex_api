@@ -17,6 +17,8 @@ class PokemonAbility extends Model
         'created_at', 'updated_at'
     ];
 
+    protected $casts = ['is_hidden' => 'boolean'];
+
     public function ability() {
         return $this->belongsTo(Ability::class);
     }

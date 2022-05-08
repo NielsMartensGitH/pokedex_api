@@ -21,4 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function() {
     Route::get('pokemons', [PokedexApiController::class, 'pokemons']);
+    Route::get('pokemons/{id}', [PokedexApiController::class, 'pokemon_detail']);
+});
+
+Route::prefix('v2')->group(function() {
+    Route::get('pokemons', [PokedexApiController::class, 'pokemons_paginated']);
 });

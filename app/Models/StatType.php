@@ -14,7 +14,7 @@ class StatType extends Model
     ];
 
     protected $hidden = [
-        'created_at', 'updated_at'
+        'created_at', 'updated_at', 'id'
     ];
 
     public function pokemon() {

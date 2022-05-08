@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('height');
             $table->string('weight');
             $table->integer('order');
+            $table->string('form');
             $table->foreignId('specie_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

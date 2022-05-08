@@ -29,6 +29,10 @@ class Pokemon extends Model
         return $this->HasManyThrough(Ability::class, PokemonAbility::class, 'pokemon_id', 'id', 'id', 'ability_id');
     }
 
+    public function pokemon_abilities() {
+        return $this->HasMany(PokemonAbility::class);
+    }
+
     public function teams() {
         return $this->HasManyThrough(Team::class, TeamPokemon::class, 'pokemon_id', 'id', 'id', 'team_id');
     }
@@ -40,6 +44,7 @@ class Pokemon extends Model
     public function pokemon_stats() {
         return $this->HasMany(PokemonStatType::class);
     }
+
 
     public function moves() {
         return $this->HasManyThrough(Move::class, PokemonMove::class, 'pokemon_id', 'id', 'id', 'move_id');

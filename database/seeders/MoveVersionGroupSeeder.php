@@ -31,6 +31,7 @@ class MoveVersionGroupSeeder extends Seeder
                     $move_name = $move_details->move->name;
                     $move_id = Move::where('name', $move_name)->first();
                     foreach ($move_details->version_group_details as $version_group_detail) {
+                        $level_learned_at = $version_group_detail->level_learned_at;
                         $learn_method_name = $version_group_detail->move_learn_method->name;
                         $version_group_name = $version_group_detail->version_group->name;
                         $learn_method_id = MoveLearnMethod::where('name', $learn_method_name)->first();
@@ -38,7 +39,8 @@ class MoveVersionGroupSeeder extends Seeder
                         MoveVersionGroup::create([
                             'move_id' => $move_id->id,
                             'version_group_id' => $version_group_id->id,
-                            'move_learn_method_id' => $learn_method_id->id
+                            'move_learn_method_id' => $learn_method_id->id,
+                            'level_learned_at' => $level_learned_at
                         ]);
                     };
             }

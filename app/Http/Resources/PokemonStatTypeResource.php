@@ -3,9 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Models\Type;
+use App\Models\StatType;
 
-class PokemonTypeResource extends JsonResource
+class PokemonStatTypeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,12 +15,10 @@ class PokemonTypeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return
-        [
-            'type' => [
-                'name' => Type::where('id', $this->type_id)->first()->name,
-                'slot' => $this->slot
-            ]
+        return [
+            'stat' => StatType::where('id', $this->stat_type_id)->first()->name,
+            'base_stat' => $this->base_stat,
+            'effort' => $this->effort
         ];
     }
 }

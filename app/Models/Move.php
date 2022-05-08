@@ -28,4 +28,8 @@ class Move extends Model
     public function version_groups() {
         return $this->HasManyThrough(VersionGroup::class, MoveVersionGroup::class, 'move_id', 'id', 'id', 'version_group_id');
     }
+
+    public function move_version_groups() {
+        return $this->HasMany(MoveVersionGroup::class);
+    }
 }

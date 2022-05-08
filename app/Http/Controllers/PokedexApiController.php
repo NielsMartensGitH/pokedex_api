@@ -12,4 +12,8 @@ class PokedexApiController extends Controller
 
         return PokemonResource::collection(Pokemon::all());
     }
+
+    public function pokemon_detail(Pokemon $id) {
+        return new PokemonResource($id);
+    }
 }

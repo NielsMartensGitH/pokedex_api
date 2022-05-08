@@ -3,9 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Models\Type;
 
-class PokemonTypeResource extends JsonResource
+class PokemonAbilityResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,12 +14,10 @@ class PokemonTypeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return
-        [
-            'type' => [
-                'name' => Type::where('id', $this->type_id)->first()->name,
-                'slot' => $this->slot
-            ]
+        return [
+            'ability' => $this->ability->name,
+            'is_hidden' => $this->is_hidden,
+            'slot' => $this->slot
         ];
     }
 }
