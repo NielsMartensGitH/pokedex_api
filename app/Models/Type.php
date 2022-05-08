@@ -20,4 +20,9 @@ class Type extends Model
     public function pokemon() {
         return $this->HasManyThrough(Pokemon::class, PokemonType::class, 'type_id', 'id', 'id', 'pokemon_id');
     }
+
+    public function pokemon_types() {
+
+        return $this->hasMany(PokemonType::class);
+    }
 }
