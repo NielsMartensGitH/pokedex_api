@@ -61,7 +61,10 @@ class PokedexApiController extends Controller
     public function search_pokemon_by_name_or_type(Request $request) {
 
         $search_value = $request->get('query');
-        return PokemonResource::collection(Pokemon::where("name", "like", "%".$search_value."%")->get());
+        return PokemonResource::collection(Pokemon::
+            whereRelation("types", "name", "like", "%".$search_value."%")
+            ->orWhere("name", "like", "%".$search_value."%")
+            ->get());
     }
 
     public function create_team(Request $request) {
