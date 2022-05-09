@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use PokePHP\PokeApi;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Exception;
 
 use Illuminate\Http\Request;
 use App\Models\Pokemon;
@@ -14,7 +16,14 @@ use App\Http\Resources\TeamResource;
 
 class PokedexApiController extends Controller
 {
-    public function pokemons() {
+    public function pokemons(Request $request) {
+
+        $sort = explode("-", $request->sort); // for example name-desc will be split between 'name' and 'desc'
+        if(count($sort) > 1) { // if there are more than one values in array sort
+            $sort_name = $sort[0];
+            $sort_by = $sort[1];
+            return PokemonResource::collection(Pokemon::orderBy($sort_name, $sort_by)->get());
+        }
 
         return PokemonResource::collection(Pokemon::all());
     }
@@ -27,7 +36,16 @@ class PokedexApiController extends Controller
 
         $limit = $request->limit;
         $sort = $request->sort;
-        return PokemonResource::collection(Pokemon::skip(10)->take(20)->paginate(5));
+
+        $sort = explode("-", $request->sort); // for example name-desc will be split between 'name' and 'desc'
+        if(count($sort) > 1) { // if there are more than one values in array sort
+            $sort_name = $sort[0];
+            $sort_by = $sort[1];
+            return PokemonResource::collection(Pokemon::orderBy($sort_name, $sort_by)->paginate($limit));
+        }
+        return PokemonResource::collection(Pokemon::all()->paginate($limit));
+
+        // return PokemonResource::collection(Pokemon::skip(10)->take(20)->paginate()); // paginate and offset do not work together
     }
 
     public function teams() {
@@ -36,6 +54,7 @@ class PokedexApiController extends Controller
     }
 
     public function single_team(Team $id) {
+
         return new TeamResource($id);
     }
 
@@ -72,13 +91,21 @@ class PokedexApiController extends Controller
             'pokemons' => ['required', 'array', 'min:1', 'max:6']
         ]);
 
-        $test = DB::table('team_pokemon')->where('team_id', $id->id)->delete(); 
+        DB::table('team_pokemon')->where('team_id', $id->id)->delete(); 
+        $pokemon_team = [];
 
         foreach($request->pokemons as $pokemon) {
+            $pokemon_team[] = $pokemon;
             TeamPokemon::create([
                 'team_id' => $id->id,
                 'pokemon_id' => $pokemon
             ]);
         }
+
+        return response()->json([
+            "id" => $id->id,
+            "name" => $id->name,
+            "pokemons" => $pokemon_team
+        ]);
     }
 }
