@@ -36,15 +36,5 @@ class MoveLearnMethodSeeder extends Seeder
             foreach ($learnMethods as $learnMethod) {
                 MoveLearnMethod::create(['name' => $learnMethod]);
             }
-
-        // foreach($pokemonTypes as $type) {
-        //     Type::create(['name' => $type]);
-        // }
-
-        // MoveLearnMethod::create(['name' => 'egg']);
-        // MoveLearnMethod::create(['name' => 'machine']);
-        // MoveLearnMethod::create(['name' => 'tutor']);
-        // MoveLearnMethod::create(['name' => 'level_up']);
-
     }
 }

@@ -24,8 +24,6 @@ class MoveVersionGroupSeeder extends Seeder
         $data = json_decode($json);
         DB::table('move_version_groups')->delete();
 
-        $move_ids = DB::table('moves')->pluck('id');
-
         foreach ($data as $pokemon) {
             foreach ($pokemon->moves as $move_details) {
                     $move_name = $move_details->move->name;

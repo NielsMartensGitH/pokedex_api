@@ -10,7 +10,7 @@ class MoveVersionGroup extends Model
     use HasFactory;
 
     protected $fillable = [
-        'move_id', 'version_group_id', 'move_learn_method_id'
+        'move_id', 'version_group_id', 'move_learn_method_id', 'level_learned_at'
     ];
 
     protected $hidden = [

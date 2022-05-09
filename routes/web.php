@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImportPokemonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/token/create', [DashboardController::class, 'createToken'])->name('token.create');
     Route::post('/token/delete/{token}', [DashboardController::class, 'deleteToken'])->name('token.delete');
 });
+
+Route::get('import', [ImportPokemonController::class, 'index'])->name('import');
 
 require __DIR__.'/auth.php';

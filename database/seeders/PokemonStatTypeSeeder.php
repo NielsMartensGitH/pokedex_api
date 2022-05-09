@@ -28,7 +28,6 @@ class PokemonStatTypeSeeder extends Seeder
         foreach ($data as $i => $pokemon) {
             $pokemon_stats = $pokemon->stats;
             foreach($pokemon_stats as $j => $stat) {
-                $stat_name = $stat->stat->name;
                 PokemonStatType::create([
                     'pokemon_id' => $pokemon_ids[$i],
                     'stat_type_id' => $stat_type_ids[$j],

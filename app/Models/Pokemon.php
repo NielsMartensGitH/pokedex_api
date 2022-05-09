@@ -10,7 +10,7 @@ class Pokemon extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'height', 'weight', 'order', 'specie_id'
+        'name', 'height', 'weight', 'order', 'specie_id', 'form'
     ];
 
     protected $hidden = [

@@ -100,6 +100,11 @@
     "/api/v1/teams": {
       "get": {
         "summary": "Get all teams",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Teams"
         ],
@@ -121,6 +126,11 @@
       },
       "post": {
         "summary": "Create a new team",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Teams"
         ],
@@ -157,6 +167,11 @@
     "/api/v1/teams/{id}": {
       "get": {
         "summary": "Get a team by id",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Teams"
         ],
@@ -197,6 +212,11 @@
       },
       "post": {
         "summary": "Set Pokemons of a team",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "Teams"
         ],
@@ -625,10 +645,5 @@
         "bearerFormat": "JWT"
       }
     }
-  },
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ]
+  }
 }
