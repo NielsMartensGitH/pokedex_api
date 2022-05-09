@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 use PokePHP\PokeApi;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\Pokemon;
 use App\Models\Team;
+use App\Models\TeamPokemon;
 
 use App\Http\Resources\PokemonResource;
 use App\Http\Resources\TeamResource;
@@ -25,7 +27,7 @@ class PokedexApiController extends Controller
 
         $limit = $request->limit;
         $sort = $request->sort;
-        return PokemonResource::collection(Pokemon::orderBy('name', 'desc')->paginate($limit));
+        return PokemonResource::collection(Pokemon::skip(10)->take(20)->paginate(5));
     }
 
     public function teams() {
@@ -62,6 +64,21 @@ class PokedexApiController extends Controller
         return response()->json([
             'result' => 'Operation failed'
         ], 500);
+        }
+    }
+
+    public function set_pokemon_for_team(Team $id, Request $request) {
+        $request->validate([
+            'pokemons' => ['required', 'array', 'min:1', 'max:6']
+        ]);
+
+        $test = DB::table('team_pokemon')->where('team_id', $id->id)->delete(); 
+
+        foreach($request->pokemons as $pokemon) {
+            TeamPokemon::create([
+                'team_id' => $id->id,
+                'pokemon_id' => $pokemon
+            ]);
         }
     }
 }
