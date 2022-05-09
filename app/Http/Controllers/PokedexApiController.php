@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 use PokePHP\PokeApi;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Exception;
 
 use Illuminate\Http\Request;
 use App\Models\Pokemon;
@@ -35,6 +33,7 @@ class PokedexApiController extends Controller
     public function pokemons_paginated(Request $request) {
 
         $limit = $request->limit;
+        $offset = $request->offset;
         $sort = $request->sort;
 
         $sort = explode("-", $request->sort); // for example name-desc will be split between 'name' and 'desc'
@@ -43,7 +42,7 @@ class PokedexApiController extends Controller
             $sort_by = $sort[1];
             return PokemonResource::collection(Pokemon::orderBy($sort_name, $sort_by)->paginate($limit));
         }
-        return PokemonResource::collection(Pokemon::all()->paginate($limit));
+        return PokemonResource::collection(Pokemon::where('id', '>', $offset)->paginate($limit));
 
         // return PokemonResource::collection(Pokemon::skip(10)->take(20)->paginate()); // paginate and offset do not work together
     }
