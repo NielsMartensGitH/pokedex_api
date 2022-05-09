@@ -25,6 +25,7 @@ Route::prefix('v1')->group(function() {
     Route::get('teams', [PokedexApiController::class, 'teams']);
     Route::get('teams/{id}', [PokedexApiController::class, 'single_team']);
     Route::get('search', [PokedexApiController::class, 'search_pokemon_by_name_or_type']);
+    Route::post('teams', [PokedexApiController::class, 'create_team']);
 });
 
 Route::prefix('v2')->group(function() {

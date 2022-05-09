@@ -42,4 +42,26 @@ class PokedexApiController extends Controller
         $search_value = $request->get('query');
         return PokemonResource::collection(Pokemon::where("name", "like", "%".$search_value."%")->get());
     }
+
+    public function create_team(Request $request) {
+        $request->validate([
+            'name' => ['required', 'string']
+        ]);
+
+        $team = new Team();
+        $team->name = $request->name;
+        $result = $team->save();
+
+        if ($result) {
+            return response()->json([
+                'id' => $team->id,
+                'name' => $team->name,
+                'pokemons' => $team->pokemon
+            ], 201);
+
+        return response()->json([
+            'result' => 'Operation failed'
+        ], 500);
+        }
+    }
 }
