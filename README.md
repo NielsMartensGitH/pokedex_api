@@ -48,6 +48,7 @@ DB_PASSWORD= {your DB password}
   
 
 5) Do the migrations and execute all seeders for dumping pokemon data:
+***Please be patient. This command can take around 6 to 8 minutes to complete because it will dump a huge amount of data.***
 
   
 
