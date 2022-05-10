@@ -57,9 +57,12 @@ php artisan migrate:fresh --seed
 
 ````
 
-  
+ 6) Generate App Key
+```
+php artisan key:generate
+``` 
 
-6) Run the application:
+7) Run the application:
 
   
 
