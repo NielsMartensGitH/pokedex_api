@@ -5,6 +5,13 @@
         </h2>
     </x-slot>
 
+    <div class="container-fluid d-flex flex-column">
+        @if(session()->get('message'))
+          <div class="alert alert-success my-2">
+            {{ session()->get('message') }}
+          </div>
+        @endif
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

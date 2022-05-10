@@ -47,4 +47,9 @@ class DashboardController extends Controller
 
     }
 
+    public function addPokemon() {
+
+        return view('addpokemon');
+    }
+
 }

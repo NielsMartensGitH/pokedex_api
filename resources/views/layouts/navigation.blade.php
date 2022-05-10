@@ -18,6 +18,9 @@
                     <x-nav-link href="/documentation">
                         {{ __('Documentation') }}
                     </x-nav-link>
+                    <x-nav-link href="/addpokemon">
+                        {{ __('Add new pokemon') }}
+                    </x-nav-link>
                 </div>
             </div>
 

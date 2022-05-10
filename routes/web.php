@@ -26,10 +26,11 @@ use App\Http\Controllers\ImportPokemonController;
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/token/create', [DashboardController::class, 'showTokenForm'])->name('token.showForm');
+    Route::get('/addpokemon', [DashboardController::class, 'addPokemon'])->name('addpokemon');
     Route::post('/token/create', [DashboardController::class, 'createToken'])->name('token.create');
     Route::post('/token/delete/{token}', [DashboardController::class, 'deleteToken'])->name('token.delete');
 });
 
-Route::get('import', [ImportPokemonController::class, 'index'])->name('import');
+Route::post('import', [ImportPokemonController::class, 'index'])->name('import');
 
 require __DIR__.'/auth.php';

@@ -21,11 +21,15 @@ use App\Models\MoveVersionGroup;
 
 class ImportPokemonController extends Controller
 {
-    public function index() {
-        $api = new PokeApi;
-        $pokemon = $api->pokemon('chikorita');
-        $data = json_decode($pokemon);
+    public function index(Request $request) {
 
+        $entered_pokemon = $request->input('name');
+        $api = new PokeApi;
+        $pokemon = $api->pokemon($entered_pokemon);
+        $data = json_decode($pokemon);
+        if(is_string($data)) {
+            return redirect('/addpokemon')->with('message', "This pokemon does not exist!");
+        }
         //  ----------- IMPORT METHODS ------------  \\
         $specie_id = $this->importSpecies($data);
         $pokemon_id = $this->importPokemon($data, $specie_id);
@@ -40,6 +44,10 @@ class ImportPokemonController extends Controller
         $this->importMoveLearnMethods($data);
         $this->importVersionGroups($data);
         $this->importMoveVersionGroups($data);
+
+        $pokemon_name = Pokemon::where('id', $pokemon_id)->first()->name;
+
+        return redirect('/')->with('message', "$pokemon_name was succesfully imported");
     }
 
     public function importSpecies($data) {
